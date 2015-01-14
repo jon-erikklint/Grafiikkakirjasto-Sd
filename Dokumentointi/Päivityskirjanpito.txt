@@ -7,3 +7,12 @@ Grafiikkakirjastot aloitettu.
 +Maalattava-rajapinta ja abstrakti luokka
 +Avaruus
 +Ikkunan ja kameran alku
+
+---
+
+20:44 14.1.2015
+Osama Abuzaid
+
+Matriisien teko aloitettu.
+
++Matriisit
