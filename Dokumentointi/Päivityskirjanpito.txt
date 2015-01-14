@@ -1,0 +1,9 @@
+20:12 14.1.2015
+Jon-Erik Klint
+
+Grafiikkakirjastot aloitettu.
+
++Vektorit
++Maalattava-rajapinta ja abstrakti luokka
++Avaruus
++Ikkunan ja kameran alku
