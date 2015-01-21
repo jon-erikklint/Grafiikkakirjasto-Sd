@@ -2,6 +2,7 @@ package grafiikka;
 
 import domain.Nelikulmio;
 import domain.Vektori;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public abstract class AbstraktiMaalattava implements Maalattava{
@@ -29,6 +30,10 @@ public abstract class AbstraktiMaalattava implements Maalattava{
         }
         
         return null;
+    }
+    
+    protected void piirraKuva(Nelikulmio kulmat, Graphics g){
+        
     }
 
     @Override

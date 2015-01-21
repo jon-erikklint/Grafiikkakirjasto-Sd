@@ -7,15 +7,34 @@ public class Nelikulmio {
     private Vektori nw;
     private Vektori sw;
 
-    public Nelikulmio(Vektori ne, Vektori se, Vektori nw, Vektori sw) {
+    public Nelikulmio(Vektori nw, Vektori ne, Vektori se, Vektori sw) {
         this.ne = ne;
         this.se = se;
         this.nw = nw;
         this.sw = sw;
     }
     
+    public Nelikulmio(Vektori[] kulmat){
+        nw = kulmat[0];
+        ne = kulmat[1];
+        se = kulmat[2];
+        sw = kulmat[3];
+    }
+    
     public Nelikulmio(){
         this(new Vektori(), new Vektori(), new Vektori(), new Vektori());
+    }
+    
+    public Vektori getKulma(int i){
+        if(i < 0 || i > 3){
+            return null;
+        }
+        
+        return getKulmat()[i];
+    }
+    
+    public Vektori[] getKulmat(){
+        return new Vektori[]{nw, ne, se, sw};
     }
     
     public double korkeus(){
