@@ -2,6 +2,7 @@ package grafiikka;
 
 import domain.Vektori;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +25,12 @@ public class Avaruus extends AbstraktiMaalattava{
     }
 
     @Override
-    public void maalaa(Graphics2D g) {
+    public BufferedImage maalaa() {
         for(Maalattava maalattava : maalattavat){
-            maalattava.maalauta(g);
+            maalattava.maalauta();
         }
+        
+        return null;
     }
 
     public List<Maalattava> getMaalattavat() {

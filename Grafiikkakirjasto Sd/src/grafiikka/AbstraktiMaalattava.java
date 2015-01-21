@@ -2,6 +2,7 @@ package grafiikka;
 
 import domain.Vektori;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 public abstract class AbstraktiMaalattava implements Maalattava{
 
@@ -21,13 +22,15 @@ public abstract class AbstraktiMaalattava implements Maalattava{
         this.nakyvyys = nakyvyys;
     }
     
-    public abstract void maalaa(Graphics2D g);
+    public abstract BufferedImage maalaa();
     
     @Override
-    public final void maalauta(Graphics2D g){
+    public final BufferedImage maalauta(){
         if(nakyvyys){
-            maalaa(g);
+            return maalaa();
         }
+        
+        return null;
     }
 
     @Override
