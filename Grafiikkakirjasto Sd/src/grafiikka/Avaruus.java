@@ -1,7 +1,7 @@
 package grafiikka;
 
+import domain.Nelikulmio;
 import domain.Vektori;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ public class Avaruus extends AbstraktiMaalattava{
     private List<Maalattava> maalattavat;
     
     public Avaruus(Vektori koko, boolean nakyvyys) {
-        super(new Vektori(), koko, new Vektori(), 0, nakyvyys);
+        super(new Vektori(), new Nelikulmio(), 0, nakyvyys);
         
         this.maalattavat = new ArrayList<>();
     }
