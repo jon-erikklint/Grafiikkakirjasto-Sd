@@ -1,8 +1,8 @@
 package grafiikka;
 
 import domain.Vektori;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 public class Ikkuna extends AbstraktiMaalattava{
     
@@ -18,7 +18,15 @@ public class Ikkuna extends AbstraktiMaalattava{
 
     @Override
     public BufferedImage maalaa() {
-        return null;
+        List<Maalattava> maalattavat = kamera.annaNakyvat(avaruus);
+        
+        BufferedImage kuva = new BufferedImage( (int) super.getKoko().getX(), (int) super.getKoko().getY(), BufferedImage.TYPE_INT_RGB);
+        
+        for(Maalattava maalattava : maalattavat){
+            BufferedImage maalattavanKuva = maalattava.maalauta();
+        }
+        
+        return kuva;
     }
 
     public Avaruus getAvaruus() {
