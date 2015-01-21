@@ -2,6 +2,7 @@ package grafiikka;
 
 import domain.Vektori;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 public class Ikkuna extends AbstraktiMaalattava{
     
@@ -16,8 +17,8 @@ public class Ikkuna extends AbstraktiMaalattava{
     }
 
     @Override
-    public void maalaa(Graphics2D g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public BufferedImage maalaa() {
+        return null;
     }
 
     public Avaruus getAvaruus() {

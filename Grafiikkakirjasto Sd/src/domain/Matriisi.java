@@ -1,5 +1,5 @@
 package domain;
-
+//Tämä on math-riisi
 public class Matriisi {
 	
 	int[][] matriisi;
