@@ -2,18 +2,14 @@ package domain;
 
 public class Matriisi {
 	
-	int[][] matriisi;
+	double[][] matriisi;
 	
-	public Matriisi(int y, int x){
-		matriisi = new int[y][x];
+	public Matriisi(int riveja, int sarakkeita){
+		matriisi = new double[riveja][sarakkeita];
 	}
 	
-	public Matriisi(int[][] matriisi){
+	public Matriisi(double[][] matriisi){
 		this.matriisi = matriisi;
-	}
-	
-	public void apply(int poo){
-		matriisi[0][0] += poo;
 	}
 	
 	public void summaa(Matriisi other){
@@ -41,7 +37,7 @@ public class Matriisi {
 		return null;
 	}
 	
-	public Matriisi tulo(Matriisi other){ //KESKENNENENENENNERNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN!
+	public Matriisi tulo(Matriisi other){
 		if(other.x() == this.y()){
 			Matriisi palautettava = new Matriisi(this.y(), this.x());
 			for(int i=0; i < other.y(); i++){
