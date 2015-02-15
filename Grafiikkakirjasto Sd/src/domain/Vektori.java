@@ -64,6 +64,10 @@ public class Vektori {
         return new Vektori( this.X * kerroin, this.Y * kerroin);
     }
     
+    public Vektori kloonaa(){
+        return new Vektori(X, Y);
+    }
+    
     public double pituus(){
         return etaisyys(new Vektori());
     }

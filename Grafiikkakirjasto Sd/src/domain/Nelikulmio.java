@@ -25,16 +25,35 @@ public class Nelikulmio {
         this(new Vektori(), new Vektori(), new Vektori(), new Vektori());
     }
     
-    public void kierra(){
-        
-    }
-    
-    public void kierto(double kulma){
+    public void kierra(double kulma){
         Vektori[] kulmat = getKulmat();
         for (int i = 0; i < 4; i++) {
             setKulma(i, getKulma(i).kierto(kulma));
         }
     }
+    
+    public Nelikulmio kierto(double kulma){
+        Nelikulmio uusi = new Nelikulmio();
+        for (int i = 0; i < 4; i++) {
+            uusi.setKulma(i, getKulma(i).kierto(kulma));
+        }
+        return uusi;
+    }
+    
+    public double halkaisija(){
+        double halkaisija1 = ne.etaisyys(sw);
+        double halkaisija2 = nw.etaisyys(se);
+        
+        return Math.max(halkaisija1, halkaisija2);
+    }
+    
+    public Nelikulmio kloonaa(){
+        Vektori[] kulmat = new Vektori[4];
+        for (int i = 0; i < 4; i++) {
+            kulmat[i] = getKulma(i).kloonaa();
+        }
+        return new Nelikulmio(kulmat);
+    }    
     
     public Vektori getKulma(int i){
         if(i < 0 || i > 3){
