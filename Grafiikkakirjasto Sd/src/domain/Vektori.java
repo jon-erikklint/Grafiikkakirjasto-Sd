@@ -64,11 +64,26 @@ public class Vektori {
         return new Vektori( this.X * kerroin, this.Y * kerroin);
     }
     
+    public Vektori kloonaa(){
+        return new Vektori(X, Y);
+    }
+    
     public double pituus(){
         return etaisyys(new Vektori());
     }
     
+    public void kierra(double kulma){
+        Vektori kierto = this.kierto(kulma);
+        this.X = kierto.X;
+        this.Y = kierto.Y;
+    }
     
+    public Vektori kierto(double kulma){
+        double cos = Math.cos(kulma);
+        double sin = Math.sin(kulma);
+        
+        return new Vektori( X*cos - Y*sin, X*sin + Y*cos );
+    }
 
     public double getX() {
         return X;

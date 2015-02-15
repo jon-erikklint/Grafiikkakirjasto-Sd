@@ -23,7 +23,8 @@ public class Matriisilaskin {
         Nelikulmio kaannetytPisteet = kierra(fyysinen.getKulmat());
         
         for (int i = 0; i < 4; i++) {
-                kaannetytPisteet.setKulma(i, sijaintiIkkunassa( kaannetytPisteet.getKulma(i) ) );
+            Vektori ikkunassa = kaannetytPisteet.getKulma(i);
+            kaannetytPisteet.setKulma(i, sijaintiIkkunassa( kaannetytPisteet.getKulma(i) ) );
         }
     }
     
@@ -40,7 +41,7 @@ public class Matriisilaskin {
     }
     
     public Vektori kierra(Vektori vektori){
-        Vektori erotus = new Vektori(vektori.getX()-kameranSijainti.getX() , vektori.getY()-kameranSijainti.getY());
+        Vektori erotus = vektori.erotus(kameranSijainti);
         
         double cos = Math.cos(kaantokulma);
         double sin = Math.sin(kaantokulma);
