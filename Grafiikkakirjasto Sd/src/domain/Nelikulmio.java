@@ -25,6 +25,17 @@ public class Nelikulmio {
         this(new Vektori(), new Vektori(), new Vektori(), new Vektori());
     }
     
+    public void kierra(){
+        
+    }
+    
+    public void kierto(double kulma){
+        Vektori[] kulmat = getKulmat();
+        for (int i = 0; i < 4; i++) {
+            setKulma(i, getKulma(i).kierto(kulma));
+        }
+    }
+    
     public Vektori getKulma(int i){
         if(i < 0 || i > 3){
             return null;
