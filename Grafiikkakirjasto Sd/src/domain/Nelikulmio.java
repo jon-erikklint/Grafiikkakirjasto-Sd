@@ -26,7 +26,6 @@ public class Nelikulmio {
     }
     
     public void kierra(double kulma){
-        Vektori[] kulmat = getKulmat();
         for (int i = 0; i < 4; i++) {
             setKulma(i, getKulma(i).kierto(kulma));
         }
