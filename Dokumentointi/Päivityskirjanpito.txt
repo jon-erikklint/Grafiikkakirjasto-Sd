@@ -47,3 +47,14 @@ Näkymät lisätty, perimisjärjestelmää järkevöitetty ja yleistä rakenteellista keh
 +Kameran perintää parannettu
 
 ---
+
+20:07 15.2.2015
+Jon-Erik Klint
+
+Kamera tehty
+
++Kameran oliomuuttujat
++Kameran maalattavien valintametodi
++Nelikulmioiden halkaisija
+
+---

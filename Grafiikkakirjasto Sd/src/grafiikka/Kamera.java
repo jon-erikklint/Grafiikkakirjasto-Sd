@@ -3,73 +3,71 @@ package grafiikka;
 import grafiikka.nakymat.Avaruus;
 import domain.Nelikulmio;
 import domain.Vektori;
-import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Kamera implements Fyysinen{
+public class Kamera{
+    
+    private Vektori sijainti;
+    private Nelikulmio kulmat;
+    private double kulma;
+
+    public Kamera(Vektori sijainti, Nelikulmio kulmat, double kulma) {
+        this.sijainti = sijainti;
+        this.kulmat = kulmat;
+        this.kulma = kulma;
+    }
     
     public List<Fyysinen> annaNakyvat(Avaruus avaruus){
-        return null;
+        List<Fyysinen> avaruudenObjektit = avaruus.getFyysiset();
+        List<Fyysinen> tarpeeksiLahella = new ArrayList<>();
+        
+        for(Fyysinen fyysinen : avaruudenObjektit){
+            double etaisyys = fyysinen.getSijainti().etaisyys(sijainti);
+            double maksimiEtaisyys = fyysinen.getKulmat().halkaisija() + kulmat.halkaisija();
+            
+            if(etaisyys < maksimiEtaisyys){
+                tarpeeksiLahella.add(fyysinen);
+            }
+        }
+        
+        return tarpeeksiLahella;
     }
 
-    @Override
     public void liikuta(Vektori vektori) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sijainti.summaa(vektori);
     }
     
-    @Override
     public void kaanna(double kulma) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.kulma += kulma;
     }
 
-    @Override
     public Vektori getSijainti() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return sijainti;
     }
 
-    @Override
     public void setSijainti(Vektori sijainti) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.sijainti = sijainti;
     }
     
-    @Override
     public double getKulma() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return kulma;
     }
 
-    @Override
     public void setKulma(double kulma) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.kulma = kulma;
     }
-
-    @Override
-    public boolean getNakyvyys() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setNakyvyys(boolean nakyvyys) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
+    
     public void skaalaa(Nelikulmio kulmat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.kulmat.skaalaa(kulmat);
     }
 
-    @Override
     public Nelikulmio getKulmat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return kulmat;
     }
 
-    @Override
     public void setKulmat(Nelikulmio nelikulmio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public BufferedImage maalauta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        kulmat = nelikulmio;
     }
     
 }

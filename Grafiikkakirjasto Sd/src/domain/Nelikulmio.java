@@ -25,6 +25,13 @@ public class Nelikulmio {
         this(new Vektori(), new Vektori(), new Vektori(), new Vektori());
     }
     
+    public double halkaisija(){
+        double halkaisija1 = ne.etaisyys(sw);
+        double halkaisija2 = nw.etaisyys(se);
+        
+        return Math.max(halkaisija1, halkaisija2);
+    }
+    
     public Vektori getKulma(int i){
         if(i < 0 || i > 3){
             return null;
