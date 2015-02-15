@@ -16,3 +16,34 @@ Osama Abuzaid
 Matriisien teko aloitettu.
 
 +Matriisit
+
+---
+
+21:41 21.1.2015
+Jon-Erik Klint ja Osama Abuzaid
+
+Maalausjärjestelmää edistetty
+
++Nelikulmiot
++Matriisilaskin
++Fyysinen
++Vektorimuokkausta
++Maalausmetodeja
++Yleistä parannusta
++Efektit
+
+---
+
+19:35 15.2.2015
+Jon-Erik Klint
+
+Näkymät lisätty, perimisjärjestelmää järkevöitetty ja yleistä rakenteellista kehitystä
+
++Näkymät
++Maalattava <- Fyysinen
++paljon sd
++Matriisilaskinta jatkettu
++Vastuuta matriisilaskimelle
++Kameran perintää parannettu
+
+---

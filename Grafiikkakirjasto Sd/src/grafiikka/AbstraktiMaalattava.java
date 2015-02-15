@@ -1,22 +1,21 @@
 package grafiikka;
 
+import domain.Nelikulmio;
 import domain.Vektori;
-import java.awt.Graphics2D;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public abstract class AbstraktiMaalattava implements Maalattava{
+public abstract class AbstraktiMaalattava implements Fyysinen{
 
     private Vektori sijainti;
-    private Vektori koko;
-    private Vektori origo;
+    private Nelikulmio kulmat;
     
     private double kulma;
     private boolean nakyvyys;
     
-    public AbstraktiMaalattava(Vektori sijainti, Vektori koko, Vektori origo, double kulma, boolean nakyvyys){
+    public AbstraktiMaalattava(Vektori sijainti, Nelikulmio kulmat, double kulma, boolean nakyvyys){
         this.sijainti = sijainti;
-        this.koko = koko;
-        this.origo = origo;
+        this.kulmat = kulmat;
         
         this.kulma = kulma;
         this.nakyvyys = nakyvyys;
@@ -32,6 +31,10 @@ public abstract class AbstraktiMaalattava implements Maalattava{
         
         return null;
     }
+    
+    protected void piirraKuva(Nelikulmio kulmat, Graphics g){
+        
+    }
 
     @Override
     public void liikuta(Vektori vektori) {
@@ -39,13 +42,8 @@ public abstract class AbstraktiMaalattava implements Maalattava{
     }
 
     @Override
-    public void skaalaa(Vektori vektori) {
-        this.koko.skaalaa(vektori);
-    }
-
-    @Override
-    public void siirraOrigoa(Vektori vektori) {
-        this.origo.summaa(vektori);
+    public void skaalaa(Nelikulmio kulmat) {
+        kulmat.skaalaa(kulmat);
     }
 
     @Override
@@ -61,26 +59,6 @@ public abstract class AbstraktiMaalattava implements Maalattava{
     @Override
     public void setSijainti(Vektori sijainti) {
         this.sijainti = sijainti;
-    }
-
-    @Override
-    public Vektori getKoko() {
-        return koko;
-    }
-
-    @Override
-    public void setKoko(Vektori koko) {
-        this.koko = koko;
-    }
-
-    @Override
-    public Vektori getOrigo() {
-        return origo;
-    }
-
-    @Override
-    public void setOrigo(Vektori origo) {
-        this.origo = origo;
     }
 
     @Override
@@ -101,6 +79,16 @@ public abstract class AbstraktiMaalattava implements Maalattava{
     @Override
     public void setNakyvyys(boolean nakyvyys){
         this.nakyvyys = nakyvyys;
+    }
+    
+    @Override
+    public Nelikulmio getKulmat(){
+        return kulmat;
+    }
+    
+    @Override
+    public void setKulmat(Nelikulmio nelikulmio){
+        this.kulmat = nelikulmio;
     }
     
 }

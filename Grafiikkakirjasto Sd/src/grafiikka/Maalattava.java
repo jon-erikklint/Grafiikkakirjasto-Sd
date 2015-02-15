@@ -2,7 +2,7 @@ package grafiikka;
 
 import java.awt.image.BufferedImage;
 
-public interface Maalattava extends Fyysinen{
+public interface Maalattava{
     
     public BufferedImage maalauta();
     

@@ -23,6 +23,15 @@ public class Vektori {
         return new Vektori(this.X + vektori.X, this.Y + vektori.Y);
     }
     
+    public void vahenna(Vektori vektori){
+        this.X -= vektori.X;
+        this.Y -= vektori.Y;
+    }
+    
+    public Vektori erotus(Vektori vektori){
+        return new Vektori(this.X - vektori.X, this.Y - vektori.Y);
+    }
+    
     public void skaalaa(Vektori vektori){
         this.X = this.X * vektori.X;
         this.Y = this.Y * vektori.Y;
