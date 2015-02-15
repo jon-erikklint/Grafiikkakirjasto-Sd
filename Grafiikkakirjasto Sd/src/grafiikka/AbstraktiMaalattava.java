@@ -5,7 +5,7 @@ import domain.Vektori;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public abstract class AbstraktiMaalattava implements Maalattava{
+public abstract class AbstraktiMaalattava implements Fyysinen{
 
     private Vektori sijainti;
     private Nelikulmio kulmat;

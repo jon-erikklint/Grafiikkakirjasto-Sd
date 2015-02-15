@@ -1,12 +1,14 @@
 package grafiikka;
 
+import grafiikka.nakymat.Avaruus;
 import domain.Nelikulmio;
 import domain.Vektori;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 public class Kamera implements Fyysinen{
     
-    public List<Maalattava> annaNakyvat(Avaruus avaruus){
+    public List<Fyysinen> annaNakyvat(Avaruus avaruus){
         return null;
     }
 
@@ -62,6 +64,11 @@ public class Kamera implements Fyysinen{
 
     @Override
     public void setKulmat(Nelikulmio nelikulmio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public BufferedImage maalauta() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -1,5 +1,6 @@
 package grafiikka;
 
+import grafiikka.nakymat.Avaruus;
 import domain.Nelikulmio;
 import domain.Vektori;
 import java.awt.image.BufferedImage;
@@ -20,30 +21,20 @@ public class Ikkuna extends AbstraktiMaalattava{
 
     @Override
     public BufferedImage maalaa() {
-        List<Maalattava> maalattavat = kamera.annaNakyvat(avaruus);
-        
+        List<Fyysinen> maalattavat = kamera.annaNakyvat(avaruus);
         BufferedImage kuva = new BufferedImage( (int) super.getKulmat().leveys(), (int) super.getKulmat().korkeus(), BufferedImage.TYPE_INT_RGB);
         
-        Vektori skaalaus = new Vektori( super.getKulmat().leveys()/kamera.getKulmat().leveys(), 
-                                       super.getKulmat().korkeus()/kamera.getKulmat().korkeus());
+        Vektori skaalaus = new Vektori( super.getKulmat().leveys()/kamera.getKulmat().leveys(), super.getKulmat().korkeus()/kamera.getKulmat().korkeus());
         Vektori kSijainti = kamera.getSijainti();
         double kaantokulma = kamera.getKulma();
         
-        for(Maalattava maalattava : maalattavat){
-            BufferedImage maalattavanKuva = maalattava.maalauta();
-            
-            Nelikulmio kaannetytPisteet = Matriisilaskin.kierra(maalattava.getKulmat(), kaantokulma, kSijainti);
-            for (int i = 0; i < 4; i++) {
-                sijaintiIkkunassa(kaannetytPisteet.getKulma(i), kSijainti, skaalaus);
-            } //////////kesken
+        Matriisilaskin laskin = new Matriisilaskin(skaalaus, kSijainti, kaantokulma);
+        
+        for(Fyysinen fyysinen : maalattavat){
+            laskin.maalaaKuvaKuvaan(fyysinen, kuva);
         }
         
         return kuva;
-    }
-    
-    public void sijaintiIkkunassa(Vektori vektori, Vektori kSijainti, Vektori skaalaus){
-        vektori.vahenna(kSijainti);
-        vektori.skaalaa(skaalaus); ///////kesken
     }
 
     public Avaruus getAvaruus() {

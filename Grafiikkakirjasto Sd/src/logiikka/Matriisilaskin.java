@@ -2,31 +2,60 @@ package logiikka;
 
 import domain.Nelikulmio;
 import domain.Vektori;
+import grafiikka.Fyysinen;
+import java.awt.image.BufferedImage;
 
 public class Matriisilaskin {
     
-    public static Nelikulmio kierra(Nelikulmio kulmat, double kulma, Vektori kiertopiste){
+    private Vektori skaalaus;
+    private Vektori kameranSijainti;
+    private double kaantokulma;
+
+    public Matriisilaskin(Vektori skaalaus, Vektori kameranSijainti, double kaantokulma) {
+        this.skaalaus = skaalaus;
+        this.kameranSijainti = kameranSijainti;
+        this.kaantokulma = kaantokulma;
+    }
+    
+    public void maalaaKuvaKuvaan(Fyysinen fyysinen, BufferedImage kuva){
+        BufferedImage maalattavanKuva = fyysinen.maalauta();
+            
+        Nelikulmio kaannetytPisteet = kierra(fyysinen.getKulmat());
+        
+        for (int i = 0; i < 4; i++) {
+                kaannetytPisteet.setKulma(i, sijaintiIkkunassa( kaannetytPisteet.getKulma(i) ) );
+        }
+    }
+    
+    public Nelikulmio kierra(Nelikulmio kulmat){
         Vektori[] vektorit = kulmat.getKulmat();
         Vektori[] uudet = new Vektori[4];
         
         for (int i = 0; i < 4; i++) {
-            uudet[i] = kierra(vektorit[i], kulma, kiertopiste);
+            uudet[i] = kierra(vektorit[i]);
         }
         
         return new Nelikulmio(uudet);
         
     }
     
-    public static Vektori kierra(Vektori vektori, double kulma, Vektori kiertopiste){
-        Vektori erotus = new Vektori(vektori.getX()-kiertopiste.getX() , vektori.getY()-kiertopiste.getY());
+    public Vektori kierra(Vektori vektori){
+        Vektori erotus = new Vektori(vektori.getX()-kameranSijainti.getX() , vektori.getY()-kameranSijainti.getY());
         
-        double cos = Math.cos(kulma);
-        double sin = Math.sin(kulma);
+        double cos = Math.cos(kaantokulma);
+        double sin = Math.sin(kaantokulma);
         
         Vektori kaannetty = new Vektori( erotus.getX()*cos - erotus.getY()*sin, erotus.getX()*sin + erotus.getY()*cos );
-        kaannetty.summaa(kiertopiste);
+        kaannetty.summaa(kameranSijainti);
         
         return kaannetty;
+    }
+    
+    public Vektori sijaintiIkkunassa(Vektori vektori){
+        Vektori uusi = vektori.erotus(kameranSijainti);
+        uusi.skaalaa(skaalaus); 
+        
+        return uusi;
     }
     
 }

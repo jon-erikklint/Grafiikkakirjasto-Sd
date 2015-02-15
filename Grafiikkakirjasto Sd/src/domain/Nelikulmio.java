@@ -33,6 +33,19 @@ public class Nelikulmio {
         return getKulmat()[i];
     }
     
+    public void setKulma(int i, Vektori vektori){
+        switch(i){
+            case 0: nw = vektori;
+                    break;
+            case 1: ne = vektori;
+                    break;
+            case 2: se = vektori;
+                    break;
+            case 3: sw = vektori;
+                    break;
+        }
+    }
+    
     public Vektori[] getKulmat(){
         return new Vektori[]{nw, ne, se, sw};
     }

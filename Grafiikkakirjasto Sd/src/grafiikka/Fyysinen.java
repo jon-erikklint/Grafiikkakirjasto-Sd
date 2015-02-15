@@ -3,7 +3,7 @@ package grafiikka;
 import domain.Nelikulmio;
 import domain.Vektori;
 
-public interface Fyysinen {
+public interface Fyysinen extends Maalattava{
     
     public void liikuta(Vektori vektori);
     public void skaalaa(Nelikulmio kulmat);
