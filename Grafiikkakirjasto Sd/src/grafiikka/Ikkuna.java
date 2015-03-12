@@ -5,7 +5,7 @@ import domain.Nelikulmio;
 import domain.Vektori;
 import java.awt.image.BufferedImage;
 import java.util.List;
-import logiikka.Matriisilaskin;
+import logiikka.IkkunanMaalaaja;
 
 public class Ikkuna extends AbstraktiMaalattava{
     
@@ -21,14 +21,14 @@ public class Ikkuna extends AbstraktiMaalattava{
 
     @Override
     public BufferedImage maalaa() {
-        List<Fyysinen> maalattavat = kamera.annaNakyvat(avaruus);
-        BufferedImage kuva = new BufferedImage( (int) super.getKulmat().leveys(), (int) super.getKulmat().korkeus(), BufferedImage.TYPE_INT_RGB);
+        List<Fyysinen> maalattavat = kamera.annaNakyvat(avaruus);   //Hakee ikkunassa näkyvät maalattavat kameralta.
+        BufferedImage kuva = new BufferedImage( (int) super.getMuoto().leveys(), (int) super.getMuoto().korkeus(), BufferedImage.TYPE_INT_RGB);
         
-        Vektori skaalaus = new Vektori( super.getKulmat().leveys()/kamera.getKulmat().leveys(), super.getKulmat().korkeus()/kamera.getKulmat().korkeus());
+        Vektori skaalaus = new Vektori( super.getMuoto().leveys()/kamera.getMuoto().leveys(), super.getMuoto().korkeus()/kamera.getMuoto().korkeus());
         Vektori kSijainti = kamera.getSijainti();
         double kaantokulma = kamera.getKulma();
         
-        Matriisilaskin laskin = new Matriisilaskin(skaalaus, kSijainti, kaantokulma);
+        IkkunanMaalaaja laskin = new IkkunanMaalaaja(skaalaus, kSijainti, kaantokulma);
         
         for(Fyysinen fyysinen : maalattavat){
             laskin.maalaaKuvaKuvaan(fyysinen, kuva);

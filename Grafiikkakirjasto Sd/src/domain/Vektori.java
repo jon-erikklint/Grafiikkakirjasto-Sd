@@ -32,26 +32,67 @@ public class Vektori {
         return new Vektori(this.X - vektori.X, this.Y - vektori.Y);
     }
     
+    /**
+     * Skaalaa vektorin X- ja Y-komponentit annetun vektorin vastaavilla komponenetilla.
+     * @param vektori 
+     */
     public void skaalaa(Vektori vektori){
         this.X = this.X * vektori.X;
         this.Y = this.Y * vektori.Y;
     }
     
+    /**
+     * Palauttaa vektorin skaalattuna annetulla vektorilla.
+     * @param vektori
+     * @return 
+     */
     public Vektori skaalaus(Vektori vektori){
         return new Vektori(this.X * vektori.X, this.Y * vektori.Y);
     }
     
+    /**
+     * Skaalaa vektorin annetun kertoimella.
+     * @param kerroin 
+     */
+    public void skaalaa(double kerroin){
+        X = kerroin*X;
+        Y = kerroin*Y;
+    }
+    
+    /**
+     * Palauttaa vektorin skaalattuna annetulla kertoimella.
+     * @param kerroin
+     * @return 
+     */
+    public Vektori skaalaus(double kerroin){
+        return new Vektori(kerroin*this.X, kerroin*this.Y);
+    }
+    
+    /**
+     * Palauttaa vektorin pistetulon annetun vektorin kanssa.
+     * @param vektori
+     * @return 
+     */
     public double pistetulo(Vektori vektori){
         return this.X * vektori.X + this.Y * vektori.Y;
     }
     
+    /**
+     * Palauttaa vektorin etäisyyden annetusta vektorista.
+     * @param vektori
+     * @return 
+     */
     public double etaisyys(Vektori vektori){
-        return Math.sqrt((this.X-vektori.X)*(this.X-vektori.X)+(this.Y-vektori.Y)*(this.Y-vektori.Y));
+        return this.erotus(vektori).pituus();
     }
     
+    /**
+     * Palauttaa vektorin suuntaisen yksikkövektorin.
+     * @return 
+     */
     public Vektori yksikkovektori(){
-        double x = X / this.etaisyys(new Vektori());
-        double y = Y / this.etaisyys(new Vektori());
+        double x = X / this.pituus();
+        double y = Y / this.pituus();
         return new Vektori(x, y);
     }
     
@@ -64,27 +105,70 @@ public class Vektori {
         return new Vektori( this.X * kerroin, this.Y * kerroin);
     }
     
-    public Vektori kloonaa(){
+    /**
+     * Palauttaa itsestä kloonin.
+     * @return this
+     */
+    public Vektori klooni(){
         return new Vektori(X, Y);
     }
     
-    public double pituus(){
-        return etaisyys(new Vektori());
+    /**
+     * Kloonaa itsensä annetuksi vektoriksi.
+     * @param vektori 
+     */
+    public void kloonaa(Vektori vektori){
+        this.X = vektori.X;
+        this.Y = vektori.Y;
     }
     
+    /**
+     * Kiertää vektoria annetulla kulmalla.
+     * @param kulma 
+     */
     public void kierra(double kulma){
         Vektori kierto = this.kierto(kulma);
-        this.X = kierto.X;
-        this.Y = kierto.Y;
+        this.kloonaa(kierto);
     }
     
+    /**
+     * Palauttaa vektorin kierrettynä annetulla kulmalla.
+     * @param kulma
+     * @return Kierretty vektori
+     */
     public Vektori kierto(double kulma){
         double cos = Math.cos(kulma);
         double sin = Math.sin(kulma);
         
         return new Vektori( X*cos - Y*sin, X*sin + Y*cos );
     }
+    
+    /**
+     * Kiertää vektoria annetulla kulmalla annetun pisteen suhteen.
+     * @param piste
+     * @param kulma 
+     */
+    public void kierra(Vektori piste, double kulma){
+        this.kloonaa(this.kierto(piste, kulma));
+    }
+    
+    /**
+     * Palauttaa vektorin kierrettynä annetulla kulmalla annetun pisteen suhteen.
+     * @param piste
+     * @param kulma
+     * @return Kierretty vektori
+     */
+    public Vektori kierto(Vektori piste, double kulma){
+        Vektori erotus = this.getSijainti(piste);
+        erotus.kierra(kulma);
+        erotus.summaa(piste);
+        return erotus;
+    }
 
+    public double pituus() {
+        return Math.sqrt(X*X + Y*Y);
+    }
+    
     public double getX() {
         return X;
     }
@@ -101,6 +185,13 @@ public class Vektori {
         this.Y = Y;
     }
     
-    
+    /**
+     * Palauttaa vektorin sijainnin annetun vektorin suhteen.
+     * @param piste
+     * @return 
+     */
+    public Vektori getSijainti(Vektori piste){
+        return piste.erotus(this);
+    }
     
 }

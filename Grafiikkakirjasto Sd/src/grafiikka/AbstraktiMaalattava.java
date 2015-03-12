@@ -82,12 +82,12 @@ public abstract class AbstraktiMaalattava implements Fyysinen{
     }
     
     @Override
-    public Nelikulmio getKulmat(){
+    public Nelikulmio getMuoto(){
         return kulmat;
     }
     
     @Override
-    public void setKulmat(Nelikulmio nelikulmio){
+    public void setMuoto(Nelikulmio nelikulmio){
         this.kulmat = nelikulmio;
     }
     

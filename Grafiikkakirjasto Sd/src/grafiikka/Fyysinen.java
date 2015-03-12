@@ -12,8 +12,8 @@ public interface Fyysinen extends Maalattava{
     public Vektori getSijainti();
     public void setSijainti(Vektori sijainti);
     
-    public Nelikulmio getKulmat();
-    public void setKulmat(Nelikulmio nelikulmio);
+    public Nelikulmio getMuoto();
+    public void setMuoto(Nelikulmio nelikulmio);
     
     public double getKulma();
     public void setKulma(double kulma);

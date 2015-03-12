@@ -71,3 +71,15 @@ Sivut, kuuntelijat, ja näppäimistön toiminnot lisätty ja muuta hauskaa
 +Vakiokansio
 
 ---
+
+20:13 12.3.2015
+Osama Abuzaid
+
+Vektorien ja nelikulmioiden rakennetta kehitetty, Matriisilaskin muutettu IkkunanMaalaajaksi ja osalle metodela laadittu selitykset.
+
++MatriisiLaskin -> IkkunanMaalaaja
++Kloonausmetodit vektoreille ja nelikulmioille
++Vektorin etäisyys ja kierto annetun pisteen suhteen
++.gitignore kuntoon
+
+---

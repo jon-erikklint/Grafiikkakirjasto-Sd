@@ -48,13 +48,19 @@ public class Nelikulmio {
         return Math.max(halkaisija1, halkaisija2);
     }
     
-    public Nelikulmio kloonaa(){
+    public Nelikulmio klooni(){
         Vektori[] kulmat = new Vektori[4];
         for (int i = 0; i < 4; i++) {
-            kulmat[i] = getKulma(i).kloonaa();
+            kulmat[i] = getKulma(i).klooni();
         }
         return new Nelikulmio(kulmat);
     }    
+    
+    public void kloonaa(Nelikulmio nelikulmio){
+        for (int i = 0; i < 4; i++) {
+            this.setKulma(i, nelikulmio.getKulma(i));
+        }
+    }
     
     public Vektori getKulma(int i){
         if(i < 0 || i > 3){
@@ -82,11 +88,11 @@ public class Nelikulmio {
     }
     
     public double korkeus(){
-        return 0;
+        return ((((((((((0))))))))));
     }
     
     public double leveys(){
-        return 4-4;
+        return (4-((4)));
     }
     
     public void skaalaa(Nelikulmio nelikulmio){
