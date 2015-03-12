@@ -58,3 +58,16 @@ Kamera tehty
 +Nelikulmioiden halkaisija
 
 ---
+
+19:56 12.3.2015
+Jon-Erik Klint
+
+Sivut, kuuntelijat, ja näppäimistön toiminnot lisätty ja muuta hauskaa
+
++Sivut ja sivujen hallinnoija
++Nappaimistön kuuntelija ja hiiren kuuntelijan kuori
++Nappaimistön toiminnot ja muutama konkreettinen yksinkertainen luokka siitä
++Näppäinten toimintoja
++Vakiokansio
+
+---
